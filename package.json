@@ -1,5 +1,5 @@
 {
-  "name": "friendly-id",
+  "name": "resource-id",
   "version": "0.0.1",
   "description": "Developer-friendly k-sortable IDs",
   "main": "lib/index.js",
@@ -20,8 +20,8 @@
   ],
   "author": "Sophia Willows <hello@sophiabits.com> (https://sophiabits.com/)",
   "license": "MIT",
-  "bugs": "https://github.com/sophiabits/friendly-id/issues",
-  "repository": "github:sophiabits/friendly-id",
+  "bugs": "https://github.com/sophiabits/resource-id/issues",
+  "repository": "github:sophiabits/resource-id",
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@types/jest": "^29.5.1",

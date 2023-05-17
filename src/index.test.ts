@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it, jest } from '@jest/globals';
 
 import { compare, generate, isValid, parse } from './index';
 
-describe('friendly-id', () => {
+describe('resource-id', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
