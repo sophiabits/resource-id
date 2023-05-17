@@ -1,18 +1,26 @@
 {
   "name": "friendly-id",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Developer-friendly k-sortable IDs",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rimraf lib && tsc",
+    "prepare": "npm run build",
     "test": "jest"
   },
+  "files": [
+    "lib",
+    "package.json",
+    "README.md"
+  ],
   "keywords": [
     "ksuid",
     "unique id"
   ],
   "author": "Sophia Willows <hello@sophiabits.com> (https://sophiabits.com/)",
   "license": "MIT",
+  "bugs": "https://github.com/sophiabits/friendly-id/issues",
   "repository": "github:sophiabits/friendly-id",
   "devDependencies": {
     "@jest/globals": "^29.5.0",
