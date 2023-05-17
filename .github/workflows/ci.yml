@@ -1,0 +1,22 @@
+name: Install and test package
+on: [pull_request, push]
+jobs:
+  nodejs:
+    name: Node.js
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [^12, ^14, ^16, ^17]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
