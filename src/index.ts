@@ -1,9 +1,17 @@
 import KSUID from 'ksuid-edge';
 import { debase62 } from 'ksuid-edge/lib/base62';
 
-export function generate(prefix: string) {
+declare const ResourceIdType: unique symbol;
+
+interface ResourceIdBrand<T extends string> {
+  [ResourceIdType]: T;
+}
+
+export type ResourceId<T extends string> = string & ResourceIdBrand<T>;
+
+export function generate<T extends string>(prefix: T) {
   const ksuid = KSUID.randomSync();
-  return `${prefix}_${ksuid.toJSON()}`;
+  return `${prefix}_${ksuid.toJSON()}` as ResourceId<T>;
 }
 
 export function compare(id1: string, id2: string) {
@@ -17,7 +25,7 @@ export function compare(id1: string, id2: string) {
   return ksuid1.compare(ksuid2);
 }
 
-export function isValid(resourceId: string): boolean {
+export function isValid(resourceId: string) {
   if (!resourceId.includes('_')) {
     return false;
   }
