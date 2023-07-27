@@ -23,18 +23,18 @@ export function isValid(resourceId: string): boolean {
   }
 
   const [_prefix, ksuid, ...rest] = resourceId.split('_');
-  if (rest.length) {
+  if (rest.length > 0) {
     return false;
   }
 
   return KSUID.isValid(debase62(ksuid));
 }
 
-export function parse(resourceId: string): { ksuid: string; prefix: string } {
-  if (!isValid(resourceId)) {
-    throw new TypeError('');
+export function parse(input: string): { ksuid: string; prefix: string } {
+  if (!isValid(input)) {
+    throw new TypeError(`resource-id: Failed to parse provided ID "${input}"`);
   }
 
-  const [prefix, ksuid] = resourceId.split('_');
+  const [prefix, ksuid] = input.split('_');
   return { ksuid, prefix };
 }
