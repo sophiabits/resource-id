@@ -1,5 +1,5 @@
-import KSUID from 'ksuid';
-import { decode } from 'ksuid/base62';
+import KSUID from 'ksuid-edge';
+import { debase62 } from 'ksuid-edge/lib/base62';
 
 export function generate(prefix: string) {
   const ksuid = KSUID.randomSync();
@@ -27,7 +27,7 @@ export function isValid(friendlyId: string): boolean {
     return false;
   }
 
-  return KSUID.isValid(decode(ksuid));
+  return KSUID.isValid(debase62(ksuid));
 }
 
 export function parse(friendlyId: string): { ksuid: string; prefix: string } {

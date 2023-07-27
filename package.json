@@ -33,6 +33,6 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "ksuid": "^3.0.0"
+    "ksuid-edge": "^0.0.4"
   }
 }
