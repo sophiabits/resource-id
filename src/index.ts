@@ -17,12 +17,12 @@ export function compare(id1: string, id2: string) {
   return ksuid1.compare(ksuid2);
 }
 
-export function isValid(friendlyId: string): boolean {
-  if (!friendlyId.includes('_')) {
+export function isValid(resourceId: string): boolean {
+  if (!resourceId.includes('_')) {
     return false;
   }
 
-  const [_prefix, ksuid, ...rest] = friendlyId.split('_');
+  const [_prefix, ksuid, ...rest] = resourceId.split('_');
   if (rest.length) {
     return false;
   }
@@ -30,11 +30,11 @@ export function isValid(friendlyId: string): boolean {
   return KSUID.isValid(debase62(ksuid));
 }
 
-export function parse(friendlyId: string): { ksuid: string; prefix: string } {
-  if (!isValid(friendlyId)) {
+export function parse(resourceId: string): { ksuid: string; prefix: string } {
+  if (!isValid(resourceId)) {
     throw new TypeError('');
   }
 
-  const [prefix, ksuid] = friendlyId.split('_');
+  const [prefix, ksuid] = resourceId.split('_');
   return { ksuid, prefix };
 }
